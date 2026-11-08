@@ -26,8 +26,8 @@ PROVIDERS = {
         "temperature": 0.3,
     },
     "gemini": {
-        "primary": "gemini-2.5-flash",
-        "backup": "gemini-2.5-flash-lite",
+        "primary": "gemini-flash-latest",
+        "backup": "gemini-flash-lite-latest",
         "base_url": "https://generativelanguage.googleapis.com/v1beta/models",
         "api_key_env": "GEMINI_API_KEY",
         "format": "gemini",  # Google Generative Language format

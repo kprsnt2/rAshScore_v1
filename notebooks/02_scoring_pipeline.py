@@ -23,8 +23,8 @@ BQ_DATASET = "brand_intelligence"
 BQ_FULL = f"{GCP_PROJECT_ID}.{BQ_DATASET}"
 
 PROVIDER = "gemini"
-PRIMARY_MODEL = "gemini-2.5-flash"
-BACKUP_MODEL = "gemini-2.5-flash-lite"
+PRIMARY_MODEL = "gemini-flash-latest"
+BACKUP_MODEL = "gemini-flash-lite-latest"
 TEMPERATURE = 0.3
 MAX_TOKENS = 8000
 TIMEOUT = 60

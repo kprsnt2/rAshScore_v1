@@ -38,12 +38,12 @@ def _get_gcp_token() -> str:
     return creds.token
 
 
-def call_vertex_gemini(prompt: str, model: str = "gemini-3.5-flash") -> tuple[str, str]:
+def call_vertex_gemini(prompt: str, model: str = "gemini-flash-latest") -> tuple[str, str]:
     """Call Vertex AI Gemini for insight generation."""
     token = _get_gcp_token()
     project_id = os.environ.get("GCP_PROJECT_ID", GCP_PROJECT_ID)
 
-    # gemini-3.5-flash uses global endpoint
+    # gemini-flash-latest uses global endpoint
     url = (
         f"https://aiplatform.googleapis.com/v1/projects/{project_id}"
         f"/locations/global/publishers/google/models/{model}:generateContent"
@@ -64,8 +64,8 @@ def call_vertex_gemini(prompt: str, model: str = "gemini-3.5-flash") -> tuple[st
 
 
 INSIGHT_MODEL_CHAIN = [
-    ("vertex-gemini", "gemini-3.5-flash"),
-    ("vertex-gemini", "gemini-2.5-flash"),
+    ("vertex-gemini", "gemini-flash-latest"),
+    ("vertex-gemini", "gemini-flash-lite-latest"),
 ]
 
 

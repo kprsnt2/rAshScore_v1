@@ -17,7 +17,7 @@ from google.cloud import bigquery
 GCP_PROJECT_ID = "rashscore"
 GCP_LOCATION = "us-central1"
 BQ_FULL = f"{GCP_PROJECT_ID}.brand_intelligence"
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-flash-latest"
 
 ai = genai.Client(vertexai=True, project=GCP_PROJECT_ID, location=GCP_LOCATION)
 bq = bigquery.Client(project=GCP_PROJECT_ID)

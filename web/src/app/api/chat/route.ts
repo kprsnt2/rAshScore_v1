@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     }
 
     const result = await streamText({
-      model: google('gemini-2.5-flash'),
+      model: google('gemini-flash-latest'),
       messages,
       system: `You are the rAsh Score AI Assistant, an expert in brand visibility and AI search rankings in India.
       You help users understand how AI models perceive different brands.
