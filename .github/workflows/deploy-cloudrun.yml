@@ -12,16 +12,25 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GCP_WIF_PROVIDER: ${{ secrets.GCP_WIF_PROVIDER }}
+      GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check Cloud Run credentials
+        if: env.GCP_WIF_PROVIDER == ''
+        run: echo "GCP_WIF_PROVIDER secret is not configured; skipping Cloud Run deployment."
+
       - name: Authenticate to Google Cloud
+        if: env.GCP_WIF_PROVIDER != ''
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
       - name: Deploy to Cloud Run
+        if: env.GCP_WIF_PROVIDER != ''
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: rashscore-web
